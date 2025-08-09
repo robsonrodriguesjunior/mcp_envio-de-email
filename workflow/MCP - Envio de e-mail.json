@@ -1,0 +1,79 @@
+{
+  "name": "MCP - Envio de e-mail",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "bearerAuth",
+        "path": "mail"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 2,
+      "position": [
+        -96,
+        -32
+      ],
+      "id": "5d3e6683-5b84-45ba-beca-7b4837c6c5c1",
+      "name": "MCP Server Trigger",
+      "webhookId": "580e5de5-ac15-4a3e-87ce-941f9604563c",
+      "notesInFlow": false,
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "9VCujEH8aolsO5G6",
+          "name": "Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "=robson@robsonjunior.tech",
+        "toEmail": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To_Email', ``, 'string') }}",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "html": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('HTML', ``, 'string') }}",
+        "options": {
+          "appendAttribution": false,
+          "ccEmail": "robson.rodrigues477557@gmail.com"
+        }
+      },
+      "type": "n8n-nodes-base.emailSendTool",
+      "typeVersion": 2.1,
+      "position": [
+        48,
+        112
+      ],
+      "id": "fbe00c9e-c6b3-497e-a40f-6804f68ba568",
+      "name": "send_email",
+      "webhookId": "1c0b419f-e080-4b2c-a9fc-b60e3081d76f",
+      "credentials": {
+        "smtp": {
+          "id": "6X4OkYDDRZTKTTUK",
+          "name": "SMTP account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "send_email": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "0882d0cf-e900-4f18-809f-9c19d8f71640",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "516f7c6aff1f59091d1b6c9a55a069c138eddd7f5a9c593bfd508b9cf7226d1f"
+  },
+  "id": "WPbfIXDEGCGAzEl5",
+  "tags": []
+}
